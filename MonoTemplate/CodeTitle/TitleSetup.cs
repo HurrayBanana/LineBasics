@@ -39,9 +39,16 @@ namespace Template.CodeTitle
         public TitleSetup() 
         {
             GM.engineM.ScreenColour = Color.Gray;
+            GM.engineM.DebugDisplay = Debug.version;
 
+            new Polygon(new Vector3[] {
+                new Vector3(100,100,0),
+                new Vector3(200,90,0),
+                new Vector3(210,100,0),
+                new Vector3(150,200,0),
+                new Vector3(100,230,0)
 
-            new Polygon();
+            });
             Sprite r = new BoundingRectangle(200, 200, 50, 100, Color.Lime);
 
 

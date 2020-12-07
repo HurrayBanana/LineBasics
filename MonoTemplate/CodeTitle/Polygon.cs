@@ -16,45 +16,36 @@ namespace Template.CodeTitle
     internal class Polygon
     {
 
-        List<Vector3> verts = new List<Vector3>();
+        Vector3[] verts;
         private Event evLogic;
-        
-        public Polygon(List<Vector3> myverts)
+        /// <summary>
+        /// reference to line object for manipulation of line properties
+        /// </summary>
+        private Line mypolyline;
+
+        public Polygon(Vector3[] myverts)
         {
             verts = myverts;
+            mypolyline = new Line(verts, LineType.PolygonClosed);
 
-            for (int i = 0; i < verts.Count - 1; i++)
-            {
-                GM.engineM.AddLine(new Line(verts[i], verts[i + 1]));
-            }
-            GM.engineM.AddLine(new Line(verts[verts.Count - 1], verts[0]));
+            //change settings
+            mypolyline.Settings.Thickness = 2;
+            mypolyline.Settings.Wash = Color.Red;
+
+
+            GM.engineM.AddLine(mypolyline);
+
+            GM.eventM.AddEvent(evLogic = new Event(0.01f, "movepoly", Move));
         }
-
-        public Polygon()
-        {
-            SetupVerts();
-
-            evLogic = new Event(0.01f, "container logic", Move);
-            GM.eventM.AddEvent(evLogic);
-        }
-
+        /// <summary>
+        /// interate through vertices
+        /// </summary>
         private void Move()
         {
-            verts[0] = new Vector3(0,50,0);
-        }
-
-        private void SetupVerts()
-        {
-            verts.Add(new Vector3(100, 100, 0));
-            verts.Add(new Vector3(300, 100, 0));
-            verts.Add(new Vector3(300, 300, 0));
-            verts.Add(new Vector3(100, 300, 0));
-
-            for (int i = 0; i < verts.Count - 1; i++)
+            for (int i = 0; i < verts.Length; i++)
             {
-                GM.engineM.AddLine(new Line(verts[i], verts[i + 1]));
+                verts[i].X++;
             }
-            GM.engineM.AddLine(new Line(verts[verts.Count - 1], verts[0]));
         }
     }
 }

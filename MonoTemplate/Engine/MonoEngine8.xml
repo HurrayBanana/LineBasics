@@ -7285,10 +7285,9 @@
         </member>
         <member name="M:Engine.Line.#ctor(Microsoft.Xna.Framework.Vector3[],Engine.LineType)">
             <summary>
-            specifies either a line from a position vector and a direction vector or creates an open or closed polygon
+            specifies either an open or closed polygon
             </summary>
-            <param name="data">if creating a PointAndDirectionVector line pass the position vector as the first item in the array and the direction vector as the second
-            .if passing polygon data pass each vertice in order in the data array</param>
+            <param name="data">pass each vertice in order in the data array</param>
             <param name="polygonLineType">pass either PointAndDirectionVector, PolygonClosed or PolgonOpen - any other values are ignored</param>
         </member>
         <member name="M:Engine.Line.CleanUp">
