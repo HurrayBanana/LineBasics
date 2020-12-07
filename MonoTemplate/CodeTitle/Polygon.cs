@@ -18,7 +18,7 @@ namespace Template.CodeTitle
 
         List<Vector3> verts = new List<Vector3>();
         private Event evLogic;
-
+        
         public Polygon(List<Vector3> myverts)
         {
             verts = myverts;
