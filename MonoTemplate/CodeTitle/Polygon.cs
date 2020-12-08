@@ -15,37 +15,26 @@ namespace Template.CodeTitle
 {
     internal class Polygon
     {
-
-        Vector3[] verts;
-        private Event evLogic;
+        /// <summary>
+        /// Protected values are accessible by inherited classes
+        /// </summary>
+        protected Vector3[] verts;
         /// <summary>
         /// reference to line object for manipulation of line properties
         /// </summary>
-        private Line mypolyline;
-
-        public Polygon(Vector3[] myverts)
+        protected Line mypolyline;
+        /// <summary>
+        /// creates a polygon line and adds it to the line manager
+        /// of the game engine
+        /// </summary>
+        /// <param name="myverts">array of vector3 values that make up the polygon</param>
+        /// <param name="style">closed or open polygon drawing</param>
+        public Polygon(Vector3[] myverts, LineType style)
         {
             verts = myverts;
-            mypolyline = new Line(verts, LineType.PolygonClosed);
-
-            //change settings
-            mypolyline.Settings.Thickness = 2;
-            mypolyline.Settings.Wash = Color.Red;
-
-
+            mypolyline = new Line(verts, style);
             GM.engineM.AddLine(mypolyline);
+        }
 
-            GM.eventM.AddEvent(evLogic = new Event(0.01f, "movepoly", Move));
-        }
-        /// <summary>
-        /// interate through vertices
-        /// </summary>
-        private void Move()
-        {
-            for (int i = 0; i < verts.Length; i++)
-            {
-                verts[i].X++;
-            }
-        }
     }
 }

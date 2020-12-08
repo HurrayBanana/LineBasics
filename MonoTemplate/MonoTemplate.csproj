@@ -60,6 +60,7 @@
     <Compile Include="CodeGame\GameSetup.cs" />
     <Compile Include="CodeTitle\BoundingRectangle.cs" />
     <Compile Include="CodeTitle\Polygon.cs" />
+    <Compile Include="CodeTitle\Rock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Assets and Messages\Assets.cs" />
