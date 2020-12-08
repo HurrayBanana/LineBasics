@@ -19,20 +19,24 @@ namespace Template.CodeTitle
         /// event to move the rock
         /// </summary>
         private Event evLogic;
-
-        /// <summary>
-        /// pass vertices and draw style to base class
-        /// then apply any other settings
-        /// </summary>
-        public Rock()
-            :base(new Vector3[] {
+        Vector3[] myverts = new Vector3[] {
                 new Vector3(100,100,0),
                 new Vector3(200,90,0),
                 new Vector3(210,100,0),
                 new Vector3(150,200,0),
-                new Vector3(100,230,0)
-            }, LineType.PolygonClosed)
+                new Vector3(100,230,0) 
+        };
+        /// <summary>
+        /// pass vertices holder length and draw style to base class
+        /// then apply any other settings
+        /// </summary>
+        public Rock()
+            :base(new Vector3[5] , LineType.PolygonClosed)
         {
+            //copy my vert data over
+            for (int i = 0; i < myverts.Length; i++)
+                verts[i] = myverts[i];
+
             //change settings
             mypolyline.Settings.Thickness = 1;
             mypolyline.Settings.Wash = Color.Red;
